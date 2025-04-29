@@ -8,5 +8,18 @@ export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/conways-game-of-life/' : '/',
   css: {
     postcss: './postcss.config.js',
+  },
+  build: {
+    outDir: 'dist',
+    // Generate sourcemaps for better debugging
+    sourcemap: true,
+    // Ensure correct path resolution for assets
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        // Ensure chunk names are predictable
+        manualChunks: undefined
+      }
+    }
   }
 })
