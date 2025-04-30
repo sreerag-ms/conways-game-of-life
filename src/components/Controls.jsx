@@ -37,7 +37,7 @@ const Controls = ({
       message.error('Grid dimensions should be at least 5x5');
       return;
     }
-    if (rowInput > 100 || colInput > 100) {
+    if (rowInput > 100 || colInput > 150) {
       message.error('Grid dimensions should not exceed 100x100');
       return;
     }
@@ -64,7 +64,7 @@ const Controls = ({
   return (
     <div className="mb-8">
       <div className="flex flex-col gap-4 mb-4 md:flex-row">
-        <Space>
+        <Space className="flex flex-wrap justify-center w-full md:justify-start" size={[8, 12]}>
           <Tooltip title="Number of rows">
             <InputNumber 
               min={5} 
@@ -72,33 +72,40 @@ const Controls = ({
               value={rowInput} 
               onChange={setRowInput}
               addonBefore="Rows"
+              className="w-full min-[400px]:w-auto"
+              size={window.innerWidth < 640 ? "small" : "middle"}
             />
           </Tooltip>
           <Tooltip title="Number of columns">
             <InputNumber 
               min={5} 
-              max={100} 
+              max={150} 
               value={colInput} 
               onChange={setColInput}
               addonBefore="Cols"
+              className="w-full min-[400px]:w-auto"
+              size={window.innerWidth < 640 ? "small" : "middle"}
             />
           </Tooltip>
           <Button 
             type="primary" 
             icon={<ReloadOutlined />}
             onClick={handleGenerate}
+            className="w-full min-[400px]:w-auto"
           >
             Generate Grid
           </Button>
         </Space>
       </div>
 
-      <div className="flex flex-wrap gap-4 mb-4">
+      <div className="grid grid-cols-2 gap-2 mb-4 sm:flex sm:flex-wrap sm:gap-4">
         <Button
           type="primary"
           icon={<PlayCircleOutlined />}
           onClick={onStart}
           disabled={isRunning}
+          className="w-full sm:w-auto"
+          size={window.innerWidth < 640 ? "small" : "middle"}
         >
           Start
         </Button>
@@ -107,6 +114,8 @@ const Controls = ({
           icon={<PauseCircleOutlined />}
           onClick={onStop}
           disabled={!isRunning}
+          className="w-full sm:w-auto"
+          size={window.innerWidth < 640 ? "small" : "middle"}
         >
           Stop
         </Button>
@@ -114,43 +123,54 @@ const Controls = ({
           icon={<StepForwardOutlined />}
           onClick={onStep}
           disabled={isRunning}
+          className="w-full sm:w-auto"
+          size={window.innerWidth < 640 ? "small" : "middle"}
         >
-          Next Step
+          Next
         </Button>
         <Button
           icon={<ClearOutlined />}
           onClick={onClear}
+          className="w-full sm:w-auto"
+          size={window.innerWidth < 640 ? "small" : "middle"}
         >
-          Clear Grid
+          Clear
         </Button>
         <Button
           icon={<SettingOutlined />}
           onClick={() => setConfigDrawerOpen(true)}
+          className="w-full col-span-2 sm:w-auto sm:col-span-1"
+          size={window.innerWidth < 640 ? "small" : "middle"}
         >
-          Configurations
+          Config
         </Button>
 
-        <Tooltip title="Simulation speed (milliseconds)">
-          <InputNumber
-            addonBefore="Interval (ms)"
-            min={10}
-            max={2000}
-            step={10}
-            value={intervalInput}
-            onChange={(val) => {
-              setIntervalInput(val);
-              onUpdateInterval(val);
-            }}
-          />
-        </Tooltip>
+        <div className="w-full col-span-2 mt-2 sm:mt-0 sm:w-auto">
+          <Tooltip title="Simulation speed (milliseconds)">
+            <InputNumber
+              addonBefore="Speed"
+              min={10}
+              max={2000}
+              step={10}
+              value={intervalInput}
+              onChange={(val) => {
+                setIntervalInput(val);
+                onUpdateInterval(val);
+              }}
+              className="w-full"
+              size={window.innerWidth < 640 ? "small" : "middle"}
+            />
+          </Tooltip>
+        </div>
       </div>
 
       <Drawer
         title="Grid Configuration"
-        placement="right"
+        placement={window.innerWidth < 768 ? "bottom" : "right"}
         onClose={() => setConfigDrawerOpen(false)}
         open={configDrawerOpen}
-        width={400}
+        width={window.innerWidth < 768 ? "100%" : 400}
+        height={window.innerWidth < 768 ? "80%" : undefined}
       >
         <div className="flex flex-col gap-4">
           <p className="text-gray-600">

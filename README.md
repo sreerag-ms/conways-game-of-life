@@ -2,7 +2,7 @@
 
 An interactive implementation of Conway's Game of Life using React, Tailwind CSS, and Ant Design.
 
-![Conway's Game of Life Screenshot](https://i.imgur.com/placeholder.png)
+![](https://github.com/sreerag-ms/conways-game-of-life/blob/main/public/demo.gif)
 
 ## About the Project
 

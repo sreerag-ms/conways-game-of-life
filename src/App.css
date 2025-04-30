@@ -1,8 +1,20 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0.5rem;
   text-align: center;
+}
+
+@media (min-width: 640px) {
+  #root {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #root {
+    padding: 2rem;
+  }
 }
 
 .logo {
@@ -46,15 +58,23 @@
 .ant-layout-header {
   line-height: 1.5;
   height: auto;
-  padding: 12px 24px;
+  padding: 8px 16px;
   background-color: aliceblue;
+}
+
+@media (min-width: 768px) {
+  .ant-layout-header {
+    padding: 12px 24px;
+  }
 }
 
 /* Grid-specific styles */
 .grid-container {
-  overflow: hidden;
+  overflow: auto;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 /* Animation for cell transitions */
