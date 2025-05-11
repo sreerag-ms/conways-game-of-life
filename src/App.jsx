@@ -44,9 +44,9 @@ function App() {
       }}
     >
       <Layout className="min-h-screen">
-        <Header className="sticky top-0 z-10 flex items-center px-4 py-3 md:px-8 border-b border-blue-200 rounded shadow bg-gradient-to-r from-blue-50 via-white to-blue-100">
+        <Header className="sticky top-0 z-10 flex items-center px-4 py-3 border-b border-blue-200 rounded shadow md:px-8 bg-gradient-to-r from-blue-50 via-white to-blue-100">
           <div className="flex items-center w-full gap-2 md:gap-3">
-            <span className="inline-flex items-center justify-center p-1 md:p-2 bg-blue-100 rounded-full shadow-sm">
+            <span className="inline-flex items-center justify-center p-1 bg-blue-100 rounded-full shadow-sm md:p-2">
               <svg width="28" height="28" viewBox="0 0 32 32" fill="none" className="md:w-8 md:h-8">
                 <rect x="6" y="6" width="20" height="20" rx="6" fill="#1677ff" opacity="0.15"/>
                 <rect x="10" y="10" width="12" height="12" rx="3" fill="#1677ff" opacity="0.3"/>
@@ -64,7 +64,7 @@ function App() {
         </Header>
         <Content className="p-3 md:p-6 lg:p-12 bg-gradient-to-b from-gray-50 to-gray-100">
           <div className="max-w-6xl mx-auto space-y-4 md:space-y-8">
-            <div className="p-3 md:p-6 bg-white rounded-lg shadow-lg">
+            <div className="p-3 bg-white rounded-lg shadow-lg md:p-6">
               <Controls
                 rows={rows}
                 cols={cols}
@@ -118,9 +118,6 @@ function App() {
             </div>
           </Modal>
         </Content>
-        <Footer className="py-4 text-xs md:text-sm text-center bg-white">
-          Conway's Game of Life ©{new Date().getFullYear()} Created with React, Ant Design, and Tailwind CSS
-        </Footer>
       </Layout>
     </ConfigProvider>
   );

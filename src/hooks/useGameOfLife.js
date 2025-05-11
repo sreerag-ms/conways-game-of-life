@@ -10,7 +10,6 @@ export function useGameOfLife({ onStabilize } = {}) {
   
   // Refs
   const simulationIntervalRef = useRef(null);
-  const previousGridRef = useRef(null);
   
   // ===== UTILITY FUNCTIONS =====
   
